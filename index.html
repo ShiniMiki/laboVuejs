@@ -1,0 +1,30 @@
+<!DOCTYPE html lang="fr">
+<html> 
+   <head> 
+		<title>Exercice 5</title>
+		<meta charset="utf-8">
+		
+		<!-- development version, includes helpful console warnings -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" href="./css/style.css"> 
+	</head>
+	<body>
+		<main>
+			<h1>Personnages de Starwars</h1>
+			<div id="app">
+	            <figure>
+	            	<img v-bind:src="figures[currentIndex].image">
+	            	 <figcaption>{{ figures[currentIndex].description }}</figcaption>
+	            </figure>
+	            <div v-for="(figure, index) in figures" v-bind:key="figure.id">            
+	                <div class="box" v-bind:id="index" 
+	                                 v-bind:style="figure.style" 
+	                                 @mouseover="mouseover(index)">
+	                    {{ figure.name }}
+	                </div>
+	            </div>
+	        </div>
+        </main>   
+		<script src="index.js"></script>
+	</body>
+</html>

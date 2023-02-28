@@ -1,0 +1,39 @@
+/* 
+  Description: Feuille de style CSS de l'exercice 5 v1
+  Fichier    : style.css
+  Auteur     : LBI
+  Date       : 5.08.2021
+*/
+main {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#app {
+}
+
+h1 {
+	width: 100%;
+	text-align: center;
+}
+
+img {
+	display: block;
+    margin: 0 auto 10px;
+}
+
+figcaption {
+	font-size: 0.9em; 
+	font-style: italic;
+	text-align: center; 
+}
+ 
+.box {
+	width: 60px;
+	margin: 10px auto 10px;
+	padding: 3px;
+}
+
+.box:hover {
+	background-color: red !important;
+}
