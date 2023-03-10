@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>LaboVueJs</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<main>
+    <h1>Magasin Mikael</h1>
+    <div id="app">
+        <div class="product-image" v-if="selectedProduct.image">
+            <h3>{{ selectedProduct.name }} Prix : {{ selectedProduct.price }} CHF <a
+                    v-if="selectedProduct.stock > productAvailability[0].size "
+                    :style="productAvailability[0].style">{{productAvailability[0].message}}</a>
+                <a v-else-if="selectedProduct.stock > productAvailability[1].size && selectedProduct.stock !== 0 "
+                   :style="productAvailability[1].style">{{productAvailability[1].message}}</a>
+                <a v-if="selectedProduct.stock === 0">Rupture de stock</a>
+                <br>
+                <img :src="selectedProduct.image" alt="Product Image" style="width: 500px;height: 500px"></h3>
+            <p>{{ selectedProduct.description }}</p>
+            <div class="products">
+                <div class="product" v-for="product in products" :key="product.id" @click="selectProduct(product)">
+                    <img :src="product.image" alt="Product Image" style="width: 60px;height: 60px">
+                </div>
+
+                <button @click="addToCart">Ajouter au panier</button>
+            </div>
+        </div>
+        <div class="product-details">
+
+//Modifier pour compter
+        </div>
+        <div class="cart">
+            <h2>Panier <a v-show="vip"> VIP Client </a></h2>
+            <ul>
+                <li v-for="(item, index) in cartItems">
+                    {{ item.name }} - {{ item.price }} CHF
+                    <button @click="removeFromCart(index)">Retirer</button>
+                </li>
+            </ul>
+            <p>Total : {{ cartTotalPrice }} CHF</p>
+            <button @click="clearCart">Vider le panier</button>
+        </div>
+    </div>
+</main>
+
+<script src="index.js"></script>
+</body>
+</html>
