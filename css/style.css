@@ -1,39 +1,183 @@
-/* 
-  Description: Feuille de style CSS de l'exercice 5 v1
-  Fichier    : style.css
-  Auteur     : LBI
-  Date       : 5.08.2021
-*/
-main {
-	width: 400px;
-	margin: 0 auto;
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color: #f5f5f5;
 }
 
-#app {
+main {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+#app
+{
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 20px;
 }
 
 h1 {
-	width: 100%;
+	font-size: 48px;
+	text-align: center;
+	margin-bottom: 30px;
+	color: #333;
+}
+
+.product-image {
+	margin-bottom: 20px;
 	text-align: center;
 }
 
-img {
+.product-image img {
+	border: 5px solid #eee;
+	border-radius: 5px;
+	max-width: 400px;
+	height: 200px;
+
+}
+
+.product-details h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.product-details p {
+	font-size: 18px;
+	margin-bottom: 10px;
+	color: #555;
+	line-height: 1.5;
+}
+
+.product-details p:last-child {
+	margin-bottom: 0;
+}
+
+.product-details button {
 	display: block;
-    margin: 0 auto 10px;
+	margin: 20px 0;
+	padding: 10px 20px;
+	background-color: #008CBA;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
 }
 
-figcaption {
-	font-size: 0.9em; 
-	font-style: italic;
-	text-align: center; 
-}
- 
-.box {
-	width: 60px;
-	margin: 10px auto 10px;
-	padding: 3px;
+.product-details button:hover {
+	background-color: #006F8F;
 }
 
-.box:hover {
-	background-color: red !important;
+.products button {
+	display: inline-block;
+	margin-left: 20px;
+	padding: 10px 20px;
+	background-color: #008CBA;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.products button:hover {
+	background-color: #006F8F;
+}
+
+.cart {
+	margin-top: 30px;
+	background-color: #eee;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.cart h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.cart ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.cart li {
+	font-size: 18px;
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cart li button {
+	padding: 5px 10px;
+	background-color: #008CBA;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+.products {
+	display: flex;
+	flex-direction: row;
+	margin-left: 150px;
+}
+.product {
+	margin-right: 10px;
+}
+.cart li button:hover {
+	background-color: #006F8F;
+}
+
+.cart p:last-child {
+	font-size: 24px;
+	margin-top: 20px;
+	color: #333;
+}
+.product-list-image {
+
+	max-width: 100px;
+	max-height: 100px;
+
+}
+product-image{
+	display: flex;
+	justify-content: center;
+}
+product-image{
+	display: flex;
+
+}
+product-list-image img{
+	display: flex;
+	justify-content: center;
+}
+button {
+	padding: 5px 10px;
+	background-color: #008CBA;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+button:hover {
+
+	background-color: #006F8F;
+}
+
+
+@media only screen and (max-width: 768px) {
+	.product-details button {
+		margin: 10px 0;
+	}
 }

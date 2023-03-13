@@ -1,30 +1,75 @@
-<!DOCTYPE html lang="fr">
-<html> 
-   <head> 
-		<title>Exercice 5</title>
-		<meta charset="utf-8">
-		
-		<!-- development version, includes helpful console warnings -->
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<link rel="stylesheet" href="./css/style.css"> 
-	</head>
-	<body>
-		<main>
-			<h1>Personnages de Starwars</h1>
-			<div id="app">
-	            <figure>
-	            	<img v-bind:src="figures[currentIndex].image">
-	            	 <figcaption>{{ figures[currentIndex].description }}</figcaption>
-	            </figure>
-	            <div v-for="(figure, index) in figures" v-bind:key="figure.id">            
-	                <div class="box" v-bind:id="index" 
-	                                 v-bind:style="figure.style" 
-	                                 @mouseover="mouseover(index)">
-	                    {{ figure.name }}
-	                </div>
-	            </div>
-	        </div>
-        </main>   
-		<script src="index.js"></script>
-	</body>
+<!--
+Nom et Prenom : Fernandez Mikael
+Nom du fichier : index.html
+Date : 28.02.2021
+Description : Magasin qui affiche une liste de produits et permet d'ajouter des produits au panier il y a aussi un système de VIP
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>LaboVueJs</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<main>
+    <h1>Magasin Mikael</h1>
+    <!-- Élément racine de l'application Vue.js -->
+    <div id="app">
+        <!-- Affichage de l'image du produit sélectionné -->
+        <div class="product-image" v-if="selectedProduct.image">
+            <h3>
+                {{ selectedProduct.name }} Prix : {{ selectedProduct.price }}€
+
+                <!-- DEBUT Affichage de l'état de disponibilité du produit -->
+                <a v-if="selectedProduct.stock > productAvailability[0].size " :style="productAvailability[0].style">
+                    {{productAvailability[0].message}}
+                </a>
+                <a v-else-if="selectedProduct.stock > productAvailability[1].size && selectedProduct.stock !== 0 "
+                   :style="productAvailability[1].style">
+                    {{productAvailability[1].message}}
+                </a>
+                <a v-if="selectedProduct.stock === 0">En rupture de stock</a>
+                <br>
+                <!-- FIN Affichage de l'état de disponibilité du produit -->
+
+                <!-- Affichage de l'image du produit -->
+                <img :src="selectedProduct.image" alt="Product Image" style="width: 500px;height: 500px">
+            </h3>
+            <!-- Affichage de la description du produit -->
+            <div class="product-description">
+                <p>{{ selectedProduct.description }}</p>
+            </div>
+            <!-- Affichage des autres produits disponibles -->
+            <div class="products">
+                <div class="product" v-for="product in products" :key="product.key" @click="selectProduct(product)">
+                    <img :src="product.image" alt="Product Image" style="width: 60px;height: 60px">
+                </div>
+                <!-- Bouton pour ajouter le produit sélectionné au panier -->
+                <button @click="addToCart">Ajouter au panier</button>
+            </div>
+        </div>
+        <div class="cart">
+            <h2>Panier <a v-if="vip"> VIP </a> </h2>
+            <ul>
+                <li v-for="(quantity, key) in cartQuantities" :key="key">
+                    <!-- Affichage des produits ajoutés au panier -->
+                    {{ products[key - 1].name }} x {{ quantity }} = {{ products[key - 1].price * quantity }}€
+                </li>
+            </ul>
+            <!-- Affichage du total à payer -->
+            <p>Total : {{ totalPrice }} CHF</p>
+            <!-- Bouton pour vider le panier -->
+            <button @click="clearCart">Vider le panier</button>
+            <!-- Bouton pour finaliser l'achat qui ne fonctionne pas -->
+            <button @click="buy">Acheter</button>
+        </div>
+        <!-- Affichage du message VIP -->
+
+    </div>
+</main>
+
+<script src="index.js"></script>
+</body>
 </html>
